@@ -150,7 +150,7 @@ public class GUI {
         });
 
         // Botão clear
-        JButton botaoclear = new JButton("Clear");
+        JButton botaoclear = new JButton("C");
         gbc.gridx = 0; 
         gbc.gridy = 4; 
         frame.add(botaoclear, gbc); 
@@ -158,7 +158,8 @@ public class GUI {
             operation_control(" ");
             valores.clear();
             atualizarTexto();
-        });     
+        });
+        
 
         // Botão +
         JButton botao_soma = new JButton("+");
@@ -192,6 +193,17 @@ public class GUI {
             valor1 = concatenar(valores);
             valores.clear();
         });
+
+        // Botão /
+        JButton botao_div = new JButton("/");
+        gbc.gridx = 2; 
+        gbc.gridy = 4; 
+        frame.add(botao_div, gbc); 
+        botao_div.addActionListener(e -> {
+            operation_control("Div");
+            valor1 = concatenar(valores);
+            valores.clear();
+        });
                 
          // Botão =
          JButton botao_igual = new JButton("=");
@@ -212,9 +224,13 @@ public class GUI {
                     valores.add(resultado); 
                     break;
                 case 3:
-                resultado = valor1 * valor2;
-                valores.add(resultado); 
-                break;
+                    resultado = valor1 * valor2;
+                    valores.add(resultado); 
+                    break;
+                case 4:
+                    resultado = valor1 / valor2;
+                    valores.add(resultado); 
+                    break;
                 default:
                     break;
              }
@@ -273,6 +289,11 @@ public class GUI {
             case "Mult":
             operation = 3;
             break; 
+
+            case "Div":
+            operation = 4;
+            break; 
+
             default:
                 operation = 1;
                 break;
